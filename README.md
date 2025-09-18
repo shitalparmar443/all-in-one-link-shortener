@@ -1,5 +1,14 @@
 # All In One Link Shortener
 
+---
+
+## 📊 Repo Stats
+![Stars](https://img.shields.io/github/stars/shitalparmar443/all-in-one-link-shortener?style=flat)
+![Forks](https://img.shields.io/github/forks/shitalparmar443/all-in-one-link-shortener?style=flat)
+![Issues](https://img.shields.io/github/issues/shitalparmar443/all-in-one-link-shortener?style=flat)
+
+---
+
 **Contributors:** [shitalparmar443](https://profiles.wordpress.org/shitalparmar443/)  
 **Donate link:** [PayPal](https://www.paypal.me/shitalparmar443/)  
 **Tags:** shortlink, permalink, seo, url-shortener, links  
