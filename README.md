@@ -119,6 +119,17 @@ Yes. Select **Permalink** as the provider.
 
 ## 🖼️ Screenshots
 
+### Admin Dashboard
+![All In One Link Shortener Settings Screenshot](assets/screenshot-1.png)
+![All In One Link Shortener Settings Screenshot](assets/screenshot-2.png)
+![All In One Link Shortener Admin Column Generate Button Screenshot](assets/screenshot-3.png)
+![Edit post Screenshot](assets/screenshot-4.png)
+![shortcode Screenshot](assets/screenshot-5.png)
+
+
+### Frontend Example
+![Frontend shortcode display short links Screenshot](assets/screenshot-6.png)
+
 1. Copy shortlink button in editor.  
 2. Shortlink column in post list.  
 3. Settings page with provider + token options.  
