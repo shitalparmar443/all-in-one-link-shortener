@@ -40,7 +40,7 @@ You can choose from multiple providers such as **Bitly, TinyURL, Rebrandly**, or
 1. Sign in at [bitly.com](https://bitly.com).  
 2. Go to **Settings → API / Developer**.  
 3. Generate a **Generic Access Token**.  
-4. Copy and paste it into **Settings → All In One Link Shortener**.  
+4. Copy and paste it into **All In One Link Shortener**.  
 
 ### TinyURL (API Key)
 1. Sign up/sign in at [TinyURL](https://tinyurl.com/app/dev).  
@@ -55,22 +55,28 @@ You can choose from multiple providers such as **Bitly, TinyURL, Rebrandly**, or
 4. Paste it into the plugin settings.  
 
 ### Add Token to Plugin
-1. Go to **WordPress Admin → Settings → All In One Link Shortener**.  
+1. Go to **WordPress Admin → All In One Link Shortener**.  
 2. Select your provider and paste the token.  
 3. Save changes and publish a post to verify shortlink generation.  
 
 ### Security Best Practices
-- Treat tokens as secrets (do not commit to Git).  
-- Tokens are stored only in WordPress Options (never in frontend HTML).  
-- Rotate tokens regularly or if compromised.  
+1. Treat tokens as secrets — never commit them to Git or expose in public code.  
+2. Store tokens only in plugin settings (WordPress Options) and never print them in frontend HTML.  
+3. Limit token scope if the provider supports scopes/permissions.  
+4. Rotate (revoke/regenerate) tokens periodically or immediately if compromised.  
+5. Document in your plugin readme where tokens are stored and include links to each provider's privacy/terms pages.
 
+### Open source
+1. Open source fully code: https://github.com/shitalparmar443/all-in-one-link-shortener/blob/main/README.md 
+2. You can pull request anytime if you add new features or find any bugs — pull requests are welcome.
+   
 ---
 
 ## ⚙️ Installation
 
 1. Upload the plugin to `/wp-content/plugins/all-in-one-link-shortener`.  
 2. Activate it from the **Plugins** menu in WordPress.  
-3. Open **Settings → All In One Link Shortener**.  
+3. Open **All In One Link Shortener**.  
 4. Choose your default provider and enter an API token if required.  
 5. Publish or update a post to generate a shortlink.  
 
@@ -122,6 +128,15 @@ Yes. Select **Permalink** as the provider.
 ### 1.0
 First release. Token-based providers supported. Only permalinks are sent to third-party APIs.
 
+## Notes
+
+- This plugin is open-source. Contributions are welcome via the GitHub repository.
+
+- If you find issues or want to contribute new features, please open a pull request on GitHub: https://github.com/shitalparmar443/all-in-one-link-shortener
+
+## Support
+
+- For support, please use the plugin's support forum on WordPress.org or open an issue on GitHub.
 
 ### Is there a shortcode?  
 Yes:  
