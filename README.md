@@ -119,19 +119,35 @@ Yes. Select **Permalink** as the provider.
 
 ## 🖼️ Screenshots
 
-### Admin Dashboard
-![All In One Link Shortener Settings Screenshot](assets/screenshot-1.png)
-![All In One Link Shortener Settings Screenshot](assets/screenshot-2.png)
-![All In One Link Shortener Admin Column Generate Button Screenshot](assets/screenshot-3.png)
-![Edit post Screenshot](assets/screenshot-4.png)
-![shortcode Screenshot](assets/screenshot-5.png)
+### 🔧 Admin Dashboard
 
+#### 1. Settings Page – Configure Provider & Token  
+![All In One Link Shortener – Settings Page](assets/screenshot-1.png)
 
-### Frontend Example
-![Frontend shortcode display short links Screenshot](assets/screenshot-6.png)
+#### 2. Settings Page – Advanced Options  
+![All In One Link Shortener – Settings Advanced Options](assets/screenshot-2.png)
 
-1. Copy shortlink button in editor.  
-2. Shortlink column in post list.  
+#### 3. Post List – Shortlink Column with Generate Button  
+![All In One Link Shortener – Admin Column Generate Button](assets/screenshot-3.png)
+
+#### 4. Post Editor – Shortlink Copy Button  
+![All In One Link Shortener – Edit Post Copy Button](assets/screenshot-4.png)
+
+#### 5. Shortcode Example in Editor  
+![All In One Link Shortener – Shortcode Example](assets/screenshot-5.png)
+
+---
+
+### 🌐 Frontend Example
+
+#### 6. Display of Short Links using Shortcode  
+![Frontend – Shortcode Display of Short Links](assets/screenshot-6.png)
+
+---
+
+### 📋 Summary
+1. Copy shortlink button in the editor.  
+2. Shortlink column in the post list.  
 3. Settings page with provider + token options.  
 
 ---
