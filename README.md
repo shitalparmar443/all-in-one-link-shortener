@@ -10,13 +10,21 @@
 ---
 
 **Contributors:** [shitalparmar443](https://profiles.wordpress.org/shitalparmar443/)
+
 **Donate link:** [PayPal](https://www.paypal.me/shitalparmar443/)
+
 **Tags:** shortlink, permalink, seo, url-shortener, links
+
 **Requires at least:** 6.1
+
 **Tested up to:** 6.8
+
 **Stable tag:** 1.0
+
 **Requires PHP:** 7.4
+
 **License:** GPLv2 or later
+
 **License URI:** [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)
 
 Create shortlinks for WordPress posts/pages with **Bitly, TinyURL, Rebrandly**, or **native permalinks**.
