@@ -344,17 +344,18 @@ class AIOLS_Plugin {
 	    update_post_meta( $post_id, '_aiols_provider', $this->get_default_provider_key() );
 
 	    // Store success message in transient
-	    set_transient(
-	        'aiols_bulk_notice',
-	        [
-	            'type' => 'success',
-	            'msg'  => sprintf(
-	                __( 'Shortlink successfully regenerated for post ID %d', 'all-in-one-link-shortener' ),
-	                $post_id
-	            ),
-	        ],
-	        30 // 30 seconds expiration
-	    );
+			set_transient(
+			    'aiols_bulk_notice',
+			    [
+			        'type' => 'success',
+			        'msg'  => sprintf(
+			            /* translators: %d is the post ID for which the shortlink was regenerated. */
+			            __( 'Shortlink successfully regenerated for post ID %d', 'all-in-one-link-shortener' ),
+			            $post_id
+			        ),
+			    ],
+			    30 // 30 seconds expiration
+			);
 
 	    wp_redirect( $redirect_url );
 	    exit;
