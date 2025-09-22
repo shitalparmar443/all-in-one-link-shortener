@@ -15,9 +15,6 @@ class AIOLS_Admin_Columns {
 
         // Handle AJAX
         add_action( 'wp_ajax_aiols_generate_shortlink', [ $this, 'ajax_generate' ] );
-
-        // JS for copy + generate
-        add_action( 'admin_footer-edit.php', [ $this, 'column_js' ] );
     }
 
     /**
@@ -91,56 +88,6 @@ class AIOLS_Admin_Columns {
         }
     }
 
-    /**
-     * JavaScript for copy and generate buttons
-     */
-    public function column_js() {
-        $nonce = wp_create_nonce( 'aiols_generate_shortlink' );
-        ?>
-        <script>
-        document.addEventListener('click', function(e) {
-            // Copy button
-            if (e.target && e.target.classList.contains('aiols-copy')) {
-                e.preventDefault();
-                const link = e.target.getAttribute('data-link');
-                navigator.clipboard.writeText(link).then(() => {
-                    e.target.textContent = 'Copied!';
-                    setTimeout(() => { e.target.textContent = 'Copy'; }, 1500);
-                });
-            }
-
-            // Generate button
-            if (e.target && e.target.classList.contains('aiols-generate')) {
-                e.preventDefault();
-                const postId = e.target.getAttribute('data-post');
-                const button = e.target;
-                button.disabled = true;
-                button.textContent = 'Generating...';
-
-                fetch(ajaxurl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: 'action=aiols_generate_shortlink&nonce=<?php echo esc_js( $nonce ); ?>&post_id=' + postId
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        const link = data.data.shortlink;
-                        button.outerHTML = '<a href="'+link+'" target="_blank">'+link+'</a> <button type="button" class="button button-small aiols-copy" data-link="'+link+'">Copy</button>';
-                    } else {
-                        button.textContent = 'Error';
-                        alert('Error: ' + data.data);
-                    }
-                })
-                .catch(err => {
-                    button.textContent = 'Error';
-                    alert('Request failed: ' + err);
-                });
-            }
-        });
-        </script>
-        <?php
-    }
 }
 
 new AIOLS_Admin_Columns();
