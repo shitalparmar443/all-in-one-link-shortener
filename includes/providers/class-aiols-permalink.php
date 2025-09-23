@@ -60,19 +60,40 @@ class AIOLS_Provider_Default_Permalink_URL implements AIOLS_Provider_Interface {
      */
     public function shorten( $url ) {
 
-		    // Validate input
-		    if ( empty( $url ) ) {
-		        throw new Exception( esc_html__( 'Empty URL provided to Default Permalink provider.', 'all-in-one-link-shortener' ) );
-		    }
-
-		    // Try to get the post ID from the URL
-		    $post_id = url_to_postid( $url );
-
-		    // Use WordPress built-in shortlink function
-		    $shortlink = wp_get_shortlink( $post_id );
-
-		    // Return sanitized URL
-		    return esc_url_raw( $shortlink );
+		// Validate empty input.
+		if ( empty( $url ) ) {
+			throw new Exception(
+				esc_html( 'Empty URL provided to Default Permalink provider.', 'all-in-one-link-shortener' )
+			);
 		}
+
+		// Validate URL format.
+		if ( ! filter_var( $url, FILTER_VALIDATE_URL ) ) {
+			throw new Exception(
+				esc_html( 'Invalid URL format provided.', 'all-in-one-link-shortener' )
+			);
+		}
+
+		// Try to get the post ID from the URL.
+		$post_id = url_to_postid( $url );
+
+		if ( ! $post_id ) {
+			throw new Exception(
+				esc_html( 'No post found for the provided URL.', 'all-in-one-link-shortener' )
+			);
+		}
+
+		// Get WordPress shortlink.
+		$shortlink = wp_get_shortlink( $post_id );
+
+		if ( empty( $shortlink ) ) {
+			throw new Exception(
+				esc_html( 'Could not generate a shortlink for this URL.', 'all-in-one-link-shortener' )
+			);
+		}
+
+		// Return sanitized shortlink.
+		return esc_url_raw( $shortlink );
+	}
 
 }
