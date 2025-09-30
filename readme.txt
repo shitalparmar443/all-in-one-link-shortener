@@ -5,7 +5,7 @@ Tags: shortlink, permalink, seo, url-shortener, links
 Requires at least: 6.1
 Tested up to: 6.8
 Stable tag: 1.0
-License: GPLv3 or later
+License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Plugin URI: https://wordpress.org/plugins/all-in-one-link-shortener/
 Author URI: https://profiles.wordpress.org/shitalparmar443/

@@ -43,8 +43,8 @@ class AIOLS_Admin_Settings {
         $providers = AIOLS_Plugin::instance()->providers;
         ?>
         <div class="wrap">
-            <?php settings_errors(); // Display success/error messages ?>
-            <h1><?php esc_html_e( 'Link Shortener Multi Settings', 'all-in-one-link-shortener' ); ?></h1>
+        		<?php settings_errors(); // Display success/error messages ?>
+            <h1><?php esc_html_e( 'All In One Link Shortener Settings', 'all-in-one-link-shortener' ); ?></h1>
             <form method="post" action="options.php">
                 <?php settings_fields( 'aiols_options' ); do_settings_sections( 'aiols-settings' ); ?>
                 <table class="form-table" role="presentation">
