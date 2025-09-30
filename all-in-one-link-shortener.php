@@ -272,38 +272,38 @@ class AIOLS_Plugin {
     }
 
     /**
-		 * Add a "Regenerate shortlink" action to the post row actions.
-		 *
-		 * This adds a custom link under each post in the post list table,
-		 * allowing users with the 'edit_post' capability to regenerate the shortlink.
-		 *
-		 * @since 1.0
-		 *
-		 * @param array   $actions Existing row actions.
-		 * @param WP_Post $post    Post object.
-		 * @return array Modified row actions including "Regenerate shortlink" link.
-		 */
-		public function add_regen_action( $actions, $post ) {
+	 * Add a "Regenerate shortlink" action to the post row actions.
+	 *
+	 * This adds a custom link under each post in the post list table,
+	 * allowing users with the 'edit_post' capability to regenerate the shortlink.
+	 *
+	 * @since 1.0
+	 *
+	 * @param array   $actions Existing row actions.
+	 * @param WP_Post $post    Post object.
+	 * @return array Modified row actions including "Regenerate shortlink" link.
+	 */
+	public function add_regen_action( $actions, $post ) {
 
-		    // Check if the current user can edit this post.
-		    if ( current_user_can( 'edit_post', $post->ID ) ) {
+		// Check if the current user can edit this post.
+		if ( current_user_can( 'edit_post', $post->ID ) ) {
 
-		        // Generate a secure nonce URL for regenerating the shortlink.
-		        $url = wp_nonce_url(
-		            admin_url( 'admin-post.php?action=aiols_regenerate&post_id=' . $post->ID ),
-		            'aiols_regen_' . $post->ID
-		        );
+			// Generate a secure nonce URL for regenerating the shortlink.
+			$url = wp_nonce_url(
+				admin_url( 'admin-post.php?action=aiols_regenerate&post_id=' . $post->ID ),
+				'aiols_regen_' . $post->ID
+			);
 
-		        // Add the custom action link.
-		        $actions['aiols_regen'] = sprintf(
-		            '<a href="%s">%s</a>',
-		            esc_url( $url ),
-		            esc_html__( 'Regenerate shortlink', 'all-in-one-link-shortener' )
-		        );
-		    }
-
-		    return $actions;
+			// Add the custom action link.
+			$actions['aiols_regen'] = sprintf(
+				'<a href="%s">%s</a>',
+				esc_url( $url ),
+				esc_html__( 'Regenerate shortlink', 'all-in-one-link-shortener' )
+			);
 		}
+
+		return $actions;
+	}
 
     public function handle_regen_action() {
 
