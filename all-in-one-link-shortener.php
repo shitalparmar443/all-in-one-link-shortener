@@ -58,7 +58,7 @@ require_once AIOLS_DIR . 'includes/class-aiols-bulk-actions.php';
  * Add settings link to plugin list
  */
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), function( $links ) {
-    $url = admin_url( 'options-general.php?page=aiols-settings' );
+    $url = admin_url( 'admin.php?page=aiols-settings' );
     $settings_link = '<a href="' . esc_url( $url ) . '">' . __( 'Settings', 'all-in-one-link-shortener' ) . '</a>';
     array_unshift( $links, $settings_link );
     return $links;
@@ -99,111 +99,111 @@ class AIOLS_Plugin {
     }
 
     /**
-		 * Enqueue admin JavaScript for the custom shortlink copy button.
-		 *
-		 * This script is only loaded on the post editing screens (post.php and post-new.php).
-		 * It powers the "Copy Shortlink" button that copies the generated shortlink
-		 * to the clipboard and displays a confirmation message.
-		 *
-		 * @since 1.0
-		 *
-		 * @param string $hook The current admin page hook suffix.
-		 */
-		public function all_in_one_link_shortener_enqueue_admin_scripts( $hook ) {
+	 * Enqueue admin JavaScript for the custom shortlink copy button.
+	 *
+	 * This script is only loaded on the post editing screens (post.php and post-new.php).
+	 * It powers the "Copy Shortlink" button that copies the generated shortlink
+	 * to the clipboard and displays a confirmation message.
+	 *
+	 * @since 1.0
+	 *
+	 * @param string $hook The current admin page hook suffix.
+	 */
+	public function all_in_one_link_shortener_enqueue_admin_scripts( $hook ) {
 
-		    // Only load script on the add/edit post screens.
-		    if ( ! in_array( $hook, array( 'post.php', 'post-new.php', 'edit.php' ), true ) ) {
-		        return;
-		    }
-
-		    // Enqueue the custom admin script for handling shortlink copy.
-		    wp_enqueue_script(
-		        'aiols-admin-shortlink', // Unique script handle.
-		        plugin_dir_url( __FILE__ ) . 'assets/js/admin-aiols-shortlink.js',
-		        array(),
-		        '1.0.0',
-		        true
-		    );
-
-		    // Localize script to make strings translatable in JS.
-		    wp_localize_script(
-		        'aiols-admin-shortlink',
-		        'aiols_js',
-		        array(
-		        		'ajax_url'     => admin_url( 'admin-ajax.php' ),
-		        		'nonce'        => wp_create_nonce( 'aiols_generate_shortlink' ),
-		        		'generate_text'=> __( 'Generating...', 'all-in-one-link-shortener' ),
-		        		'error_text'   => __( 'Error', 'all-in-one-link-shortener' ),
-		        		'error_message'=> __( 'Request failed', 'all-in-one-link-shortener' ),
-		            'message'      => __( 'Shortlink copied:', 'all-in-one-link-shortener' ),
-		        )
-		    );
+		// Only load script on the add/edit post screens.
+		if ( ! in_array( $hook, array( 'post.php', 'post-new.php', 'edit.php' ), true ) ) {
+			return;
 		}
+
+		// Enqueue the custom admin script for handling shortlink copy.
+		wp_enqueue_script(
+			'aiols-admin-shortlink', // Unique script handle.
+			plugin_dir_url( __FILE__ ) . 'assets/js/admin-aiols-shortlink.js',
+			array(),
+			'1.0.0',
+			true
+		);
+
+		// Localize script to make strings translatable in JS.
+		wp_localize_script(
+			'aiols-admin-shortlink',
+			'aiols_js',
+			array(
+					'ajax_url'     => admin_url( 'admin-ajax.php' ),
+					'nonce'        => wp_create_nonce( 'aiols_generate_shortlink' ),
+					'generate_text'=> __( 'Generating...', 'all-in-one-link-shortener' ),
+					'error_text'   => __( 'Error', 'all-in-one-link-shortener' ),
+					'error_message'=> __( 'Request failed', 'all-in-one-link-shortener' ),
+				'message'      => __( 'Shortlink copied:', 'all-in-one-link-shortener' ),
+			)
+		);
+	}
 
     /**
-		 * Add custom shortlink field to the post edit screen.
-		 *
-		 * @param string  $return    The existing HTML for the permalink.
-		 * @param int     $post_id   The current post ID.
-		 * @param string  $new_title The new post title.
-		 * @param string  $new_slug  The new post slug.
-		 * @param WP_Post $post      The post object.
-		 *
-		 * @return string Modified HTML with custom shortlink field.
-		 */
-		public function all_in_one_link_shortener_add_custom_shortlink_field( $return, $post_id, $new_title, $new_slug, $post ) {
-		    $short_link = get_post_meta( $post_id, '_aiols_shortlink', true );
+	 * Add custom shortlink field to the post edit screen.
+	 *
+	 * @param string  $return    The existing HTML for the permalink.
+	 * @param int     $post_id   The current post ID.
+	 * @param string  $new_title The new post title.
+	 * @param string  $new_slug  The new post slug.
+	 * @param WP_Post $post      The post object.
+	 *
+	 * @return string Modified HTML with custom shortlink field.
+	 */
+	public function all_in_one_link_shortener_add_custom_shortlink_field( $return, $post_id, $new_title, $new_slug, $post ) {
+		$short_link = get_post_meta( $post_id, '_aiols_shortlink', true );
 
-		    if ( empty( $short_link ) ) {
-		        return $return;
-		    }
-
-		    ob_start();
-		    ?>
-		    <div class="custom-shortlink">
-		        <button type="button" class="button button-secondary aiols-copy-shortlink" data-shortlink="<?php echo esc_attr( $short_link ); ?>" >
-		            <?php esc_html_e( 'Copy Shortlink', 'all-in-one-link-shortener' ); ?>
-		        </button>
-		    </div>
-		    <?php
-		    return $return . ob_get_clean();
+		if ( empty( $short_link ) ) {
+			return $return;
 		}
+
+		ob_start();
+		?>
+		<div class="custom-shortlink">
+			<button type="button" class="button button-secondary aiols-copy-shortlink" data-shortlink="<?php echo esc_attr( $short_link ); ?>" >
+				<?php esc_html_e( 'Copy Shortlink', 'all-in-one-link-shortener' ); ?>
+			</button>
+		</div>
+		<?php
+		return $return . ob_get_clean();
+	}
     
     /**
-		 * Register the available shortlink providers.
+	 * Register the available shortlink providers.
+	 *
+	 * This method initializes the built-in shortlink providers
+	 * (Permalink, TinyURL, Bitly, and Rebrandly) and allows
+	 * third-party developers to add or override providers
+	 * via the `aiols_register_providers` filter.
+	 *
+	 * Each provider must implement a `get_key()` method, and the
+	 * array keys here should match those provider keys.
+	 *
+	 * @since 1.0
+	 *
+	 * @return void
+	 */
+	private function register_providers() {
+		// Built-in providers — keys must match the provider's get_key() value.
+		$this->providers['permalink']   = new AIOLS_Provider_Default_Permalink_URL();
+		$this->providers['tinyurl']     = new AIOLS_Provider_TinyURL();
+		$this->providers['bitly']       = new AIOLS_Provider_Bitly();
+		$this->providers['rebrandly']   = new AIOLS_Provider_Rebrandly();
+
+		/**
+		 * Filter the list of registered shortlink providers.
 		 *
-		 * This method initializes the built-in shortlink providers
-		 * (Permalink, TinyURL, Bitly, and Rebrandly) and allows
-		 * third-party developers to add or override providers
-		 * via the `aiols_register_providers` filter.
-		 *
-		 * Each provider must implement a `get_key()` method, and the
-		 * array keys here should match those provider keys.
+		 * Developers can use this filter to add custom providers or
+		 * modify/remove existing ones. Each provider should be an object
+		 * implementing the required interface or methods expected by the plugin.
 		 *
 		 * @since 1.0
 		 *
-		 * @return void
+		 * @param array $this->providers An associative array of provider objects, keyed by provider slug.
 		 */
-		private function register_providers() {
-		    // Built-in providers — keys must match the provider's get_key() value.
-		    $this->providers['permalink']   = new AIOLS_Provider_Default_Permalink_URL();
-		    $this->providers['tinyurl']     = new AIOLS_Provider_TinyURL();
-		    $this->providers['bitly']       = new AIOLS_Provider_Bitly();
-		    $this->providers['rebrandly']   = new AIOLS_Provider_Rebrandly();
-
-		    /**
-		     * Filter the list of registered shortlink providers.
-		     *
-		     * Developers can use this filter to add custom providers or
-		     * modify/remove existing ones. Each provider should be an object
-		     * implementing the required interface or methods expected by the plugin.
-		     *
-		     * @since 1.0
-		     *
-		     * @param array $this->providers An associative array of provider objects, keyed by provider slug.
-		     */
-		    $this->providers = apply_filters( 'aiols_register_providers', $this->providers );
-		}
+		$this->providers = apply_filters( 'aiols_register_providers', $this->providers );
+	}
 
     public function get_provider( $key ) {
         return isset( $this->providers[ $key ] ) ? $this->providers[ $key ] : false;
@@ -272,38 +272,38 @@ class AIOLS_Plugin {
     }
 
     /**
-		 * Add a "Regenerate shortlink" action to the post row actions.
-		 *
-		 * This adds a custom link under each post in the post list table,
-		 * allowing users with the 'edit_post' capability to regenerate the shortlink.
-		 *
-		 * @since 1.0
-		 *
-		 * @param array   $actions Existing row actions.
-		 * @param WP_Post $post    Post object.
-		 * @return array Modified row actions including "Regenerate shortlink" link.
-		 */
-		public function add_regen_action( $actions, $post ) {
+	 * Add a "Regenerate shortlink" action to the post row actions.
+	 *
+	 * This adds a custom link under each post in the post list table,
+	 * allowing users with the 'edit_post' capability to regenerate the shortlink.
+	 *
+	 * @since 1.0
+	 *
+	 * @param array   $actions Existing row actions.
+	 * @param WP_Post $post    Post object.
+	 * @return array Modified row actions including "Regenerate shortlink" link.
+	 */
+	public function add_regen_action( $actions, $post ) {
 
-		    // Check if the current user can edit this post.
-		    if ( current_user_can( 'edit_post', $post->ID ) ) {
+		// Check if the current user can edit this post.
+		if ( current_user_can( 'edit_post', $post->ID ) ) {
 
-		        // Generate a secure nonce URL for regenerating the shortlink.
-		        $url = wp_nonce_url(
-		            admin_url( 'admin-post.php?action=aiols_regenerate&post_id=' . $post->ID ),
-		            'aiols_regen_' . $post->ID
-		        );
+			// Generate a secure nonce URL for regenerating the shortlink.
+			$url = wp_nonce_url(
+				admin_url( 'admin-post.php?action=aiols_regenerate&post_id=' . $post->ID ),
+				'aiols_regen_' . $post->ID
+			);
 
-		        // Add the custom action link.
-		        $actions['aiols_regen'] = sprintf(
-		            '<a href="%s">%s</a>',
-		            esc_url( $url ),
-		            esc_html__( 'Regenerate shortlink', 'all-in-one-link-shortener' )
-		        );
-		    }
-
-		    return $actions;
+			// Add the custom action link.
+			$actions['aiols_regen'] = sprintf(
+				'<a href="%s">%s</a>',
+				esc_url( $url ),
+				esc_html__( 'Regenerate shortlink', 'all-in-one-link-shortener' )
+			);
 		}
+
+		return $actions;
+	}
 
     public function handle_regen_action() {
 
