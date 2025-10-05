@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/shitalparmar443
 Tags: shortlink, permalink, seo, url-shortener, links
 Requires at least: 6.1
 Tested up to: 6.8
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Plugin URI: https://wordpress.org/plugins/all-in-one-link-shortener/
@@ -13,13 +13,13 @@ Author URI: https://profiles.wordpress.org/shitalparmar443/
 Create shortlinks for WordPress posts/pages using Bitly, TinyURL, Rebrandly, or native WordPress permalinks.
 
 == Description ==
-All In One Link Shortener allows you to easily create short links for posts, pages, or any URL on your WordPress site. It supports multiple link shortening services including Bitly, TinyURL, Rebrandly and cutt.ly. You can generate short links using a shortcode and quickly copy them in the admin area.
+All In One Link Shortener allows you to easily create short links for posts, pages, or any URL on your WordPress site. It supports multiple link shortening services including Bitly, TinyURL, Rebrandly, is.gd and cutt.ly. You can generate short links using a shortcode and quickly copy them in the admin area.
 
 This plugin is lightweight, fully compatible with WordPress, and provides an intuitive interface in the admin dashboard.
 
 == Features ==
 - Automatic shortlink generation on publish/update.  
-- Supports providers: Bitly, TinyURL, Rebrandly, cutt.ly or native WordPress permalinks.  
+- Supports providers: Bitly, TinyURL, Rebrandly, cutt.ly, is.gd or native WordPress permalinks.  
 - Admin column with copy-to-clipboard button.  
 - Regenerate shortlinks via post actions or bulk actions.  
 - WP-CLI support for developers.  
@@ -64,6 +64,14 @@ This plugin is lightweight, fully compatible with WordPress, and provides an int
 4. If you don’t have one, click Generate API Key to create a new key.
 5. Copy the generated key and store it securely.
 6. Paste it into your plugin settings → Save Changes.
+
+= is.gd (No API Key Required) =
+1. Visit [is.gd](https://is.gd/developers.php)
+2. You don’t need to create an account or API key — is.gd’s shortening service is open for public use.
+3. To shorten a link using the API, simply use the following URL format: `https://is.gd/create.php?format=json&url=YOUR_LONG_URL`.
+4. Replace YOUR_LONG_URL with the actual link you want to shorten.
+5. You can test this directly in your browser or use it programmatically via your plugin.
+6. For full API documentation, visit [is.gd API Reference](https://is.gd/developers.php).
 
 == Security & Best Practices ==
 - Treat tokens as secrets; do not commit to public repositories.  
@@ -125,11 +133,23 @@ Yes. Select **Permalink** as the provider. No external API requests are made.
    - Privacy Policy: https://cutt.ly/privacy
    - Contact us : https://cutt.ly/contact
 
+5. **is.gd API Information (No API Key Required)**
+	- API URL: [https://is.gd/create.php?format=json&url=YOUR_LONG_URL](https://is.gd/create.php?format=json&url=YOUR_LONG_URL)  
+	- Purpose: Generate short links without requiring an API key.  
+	- Data Sent: Original long URL (no authentication required).  
+	- Documentation: [https://is.gd/developers.php](https://is.gd/developers.php)  
+	- Terms of Service: [https://is.gd/terms.php](https://is.gd/terms.php)  
+	- Privacy Policy: [https://is.gd/privacy.php](https://is.gd/privacy.php)  
+	- Contact Us: [https://is.gd/contact.php](https://is.gd/contact.php)
+
 == Open Source ==
 - GitHub repository: https://github.com/shitalparmar443/all-in-one-link-shortener  
 - Contributions via pull requests are welcome.
 
 == Changelog ==
+
+= 1.0.2 =
+* is.gd shortlink provider added.
 
 = 1.0.1 =
 * cutt.ly shortlink provider added.

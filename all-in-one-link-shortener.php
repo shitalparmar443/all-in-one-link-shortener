@@ -3,7 +3,7 @@
  * Plugin Name: All In One Link Shortener
  * Plugin URI: https://wordpress.org/plugins/all-in-one-link-shortener/
  * Description: Multi-provider link shortener (TinyURL, Bitly, Rebrandly). Admin UI for keys and default provider.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Shitalben Parmar
  * Contributors: shitalparmar443
  * Author URI: https://profiles.wordpress.org/shitalparmar443/
@@ -12,7 +12,7 @@
  * Requires at least: 6.1
  * Tested up to: 6.8
  * Requires PHP: 7.4
- * Stable tag: 1.0.1
+ * Stable tag: 1.0.2
  * License: GPLv3 or later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
@@ -191,6 +191,7 @@ class AIOLS_Plugin {
 		    $this->providers['bitly']       = new AIOLS_Provider_Bitly();
 		    $this->providers['rebrandly']   = new AIOLS_Provider_Rebrandly();
 		    $this->providers['cuttly']    = new AIOLS_Provider_Cuttly();
+		    $this->providers['isgd']      = new AIOLS_Provider_Isgd();
 		    /**
 		     * Filter the list of registered shortlink providers.
 		     *

@@ -94,12 +94,42 @@ class AIOLS_Admin_Settings {
                         <th scope="row"><label for="aiols_rebrandly_key"><?php esc_html_e( 'Rebrandly API Key', 'all-in-one-link-shortener' ); ?></label></th>
                         <td>
                             <input type="text" name="aiols_rebrandly_key" id="aiols_rebrandly_key" value="<?php echo esc_attr( get_option( 'aiols_rebrandly_key', '' ) ); ?>" class="regular-text" />
+                            <p class="description"><?php esc_html_e( 'You can define AIOLS_REBRANDLY_KEY in wp-config.php or paste token here.', 'all-in-one-link-shortener' ); ?></p>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row"><label for="aiols_cuttly_key"><?php esc_html_e( 'Cutt.ly API Key', 'all-in-one-link-shortener' ); ?></label></th>
-                        <td><input type="text" name="aiols_cuttly_key" id="aiols_cuttly_key" value="<?php echo esc_attr( get_option( 'aiols_cuttly_key', '' ) ); ?>" class="regular-text" /></td>
+                        <td>
+                        	<input type="text" name="aiols_cuttly_key" id="aiols_cuttly_key" value="<?php echo esc_attr( get_option( 'aiols_cuttly_key', '' ) ); ?>" class="regular-text" />
+                        	<p class="description"><?php esc_html_e( 'You can define AIOLS_CUTTLY in wp-config.php or paste token here.', 'all-in-one-link-shortener' ); ?></p>
+                        </td>
                     </tr>
+                    <tr>
+									    <th scope="row">
+									        <label for="aiols_isgd_key"><?php esc_html_e( 'is.gd', 'all-in-one-link-shortener' ); ?></label>
+									    </th>
+									    <td>
+									        <p class="description">
+									            <?php
+									            printf(
+									                /* translators: %s: is.gd API documentation URL */
+									                esc_html__( 'is.gd does not require an API key. For more information, visit: %s', 'all-in-one-link-shortener' ),
+									                '<a href="https://is.gd/apishorteningreference.php" target="_blank" rel="noopener noreferrer">https://is.gd/apishorteningreference.php</a>'
+									            );
+									            ?>
+									        </p>
+									        <p class="description">
+									            <?php
+									            printf(
+									                /* translators: %s: is.gd JSON API URL */
+									                esc_html__( 'This plugin uses the JSON method for URL shortening: %s', 'all-in-one-link-shortener' ),
+									                '<a href="https://is.gd/create.php?format=json&amp;url=longurl" target="_blank" rel="noopener noreferrer">https://is.gd/create.php?format=json&amp;url=longurl</a>'
+									            );
+									            ?>
+									        </p>
+									    </td>
+									</tr>
+                    
                 </table>
 
                 <?php submit_button(); ?>
