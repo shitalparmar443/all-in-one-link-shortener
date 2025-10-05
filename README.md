@@ -27,18 +27,18 @@
 
 **License URI:** [https://www.gnu.org/licenses/gpl-3.0.html](https://www.gnu.org/licenses/gpl-3.0.html)
 
-Create shortlinks for WordPress posts/pages with **Bitly, TinyURL, Rebrandly**, or **native permalinks**.
+Create shortlinks for WordPress posts/pages with **Bitly, TinyURL, Rebrandly, Cuttly**, or **native permalinks**.
 
 ---
 
 ## 📚 Description
 
 **All In One Link Shortener** allows easy generation of shortlinks for your WordPress content.
-Choose from multiple providers: **Bitly, TinyURL, Rebrandly**, or use **WordPress permalinks**.
+Choose from multiple providers: **Bitly, TinyURL, Rebrandly, Cuttly**, or use **WordPress permalinks**.
 
 ### 🔑 Compliance with WordPress.org Guidelines
 
-* **External Services:** Only the permalink URL of a post/page is sent to third-party APIs (Bitly, TinyURL, Rebrandly). No personal data, titles, or analytics are transmitted.
+* **External Services:** Only the permalink URL of a post/page is sent to third-party APIs (Bitly, TinyURL, Rebrandly, Cuttly). No personal data, titles, or analytics are transmitted.
 * **Privacy:** The plugin does **not** track users, collect analytics, or include hidden data collection. Shortlinks are generated only when publishing or updating a post.
 
 ### ✨ Features
@@ -76,6 +76,14 @@ Choose from multiple providers: **Bitly, TinyURL, Rebrandly**, or use **WordPres
 3. Generate a new API key.
 4. Paste it into plugin settings.
 
+### Cutt.ly (API Key)
+1. Sign in at [Cutt.ly](https://cutt.ly/).
+2. In the left sidebar, go to API → [API Key](https://cutt.ly/edit).
+3. Your API Key will be visible on the right side under your account information.
+4. If you don’t have one, click Generate API Key to create a new key.
+5. Copy the generated key and store it securely.
+6. Paste it into your plugin settings → Save Changes.
+
 ### Add Token to Plugin
 
 1. Go to **WordPress Admin → All In One Link Shortener**.
@@ -112,6 +120,7 @@ Choose from multiple providers: **Bitly, TinyURL, Rebrandly**, or use **WordPres
 * Bitly → [API Docs](https://dev.bitly.com/)
 * TinyURL → [API Docs](https://tinyurl.com/app/dev)
 * Rebrandly → [API Docs](https://developers.rebrandly.com/)
+* Cutt.ly → [API Docs](https://cutt.ly/api-documentation/regular-api)
 
 **Do I need an API token?**
 Yes, for Bitly, TinyURL, and Rebrandly. WordPress permalinks don’t require one.
@@ -163,9 +172,21 @@ Yes, select **Permalink** as the provider.
    * Terms: [Rebrandly TOS](https://www.rebrandly.com/terms)
    * Privacy: [Rebrandly Privacy](https://www.rebrandly.com/privacy)
 
+4. **cutt.ly**  
+   - API URL: [https://cutt.ly/api-documentation/regular-api](https://cutt.ly/api-documentation/regular-api)
+   - Purpose: Generate short links using cutt.ly.  
+   - Data Sent: Original URL + API key.  
+   - Documentation: [https://cutt.ly/api-documentation/regular-api](https://cutt.ly/api-documentation/regular-api)
+   - Terms of Service: [cutt.ly TOS](https://cutt.ly/terms)
+   - Privacy Policy: [cutt.ly Privacy](https://cutt.ly/privacy)
+   - Contact us : [cutt.ly Contact us](https://cutt.ly/contact)
+
 ---
 
 ## 📌 Changelog
+
+### 1.0.1
+* cutt.ly shortlink provider added.
 
 ### 1.0
 
