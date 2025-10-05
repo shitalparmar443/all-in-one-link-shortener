@@ -96,7 +96,10 @@ class AIOLS_Admin_Settings {
                             <input type="text" name="aiols_rebrandly_key" id="aiols_rebrandly_key" value="<?php echo esc_attr( get_option( 'aiols_rebrandly_key', '' ) ); ?>" class="regular-text" />
                         </td>
                     </tr>
-
+                    <tr>
+                        <th scope="row"><label for="aiols_cuttly_key"><?php esc_html_e( 'Cutt.ly API Key', 'all-in-one-link-shortener' ); ?></label></th>
+                        <td><input type="text" name="aiols_cuttly_key" id="aiols_cuttly_key" value="<?php echo esc_attr( get_option( 'aiols_cuttly_key', '' ) ); ?>" class="regular-text" /></td>
+                    </tr>
                 </table>
 
                 <?php submit_button(); ?>
