@@ -156,9 +156,15 @@ Yes, select **Permalink** as the provider.
 ## 🖼️ Screenshots
 
 1. Copy shortlink button in the post editor.
+![Plugin Screenshot](assets/screenshot-1.png)
+![Plugin Screenshot](assets/screenshot-2.png)
 2. Shortlink column in post list.
+![Plugin Screenshot](assets/screenshot-3.png)
+![Plugin Screenshot](assets/screenshot-4.png)
 3. Settings page with provider + token options.
+![Plugin Screenshot](assets/screenshot-5.png)
 4. Shortcode display in frontend.
+![Plugin Screenshot](assets/screenshot-6.png)
 
 ---
 
