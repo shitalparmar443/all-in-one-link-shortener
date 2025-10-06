@@ -29,7 +29,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
          * @when after_wp_load
          */
         public function generate( $args, $assoc_args ) {
-            $provider_key = $assoc_args['provider'] ?? get_option( 'aiols_default_provider', 'permalink' );
+            $provider_key = $assoc_args['provider'] ?? get_option( 'aiols_default_provider', 'aiols_permalink' );
             $post_type    = $assoc_args['post_type'] ?? 'post';
 
             $plugin    = AIOLS_Plugin::instance();

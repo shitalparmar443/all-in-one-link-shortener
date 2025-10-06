@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class AIOLS_Provider_Rebrandly implements AIOLS_Provider_Interface {
 
-    public function get_key() { return 'rebrandly'; }
+    public function get_key() { return 'aiols_rebrandly'; }
     public function get_label() { return __( 'Rebrandly', 'all-in-one-link-shortener' ); }
 
     public function shorten( $url ) {

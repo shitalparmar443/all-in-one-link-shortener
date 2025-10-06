@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class AIOLS_Provider_Bitly implements AIOLS_Provider_Interface {
 
-    public function get_key() { return 'bitly'; }
+    public function get_key() { return 'aiols_bitly'; }
     public function get_label() { return __( 'Bitly', 'all-in-one-link-shortener' ); }
 
     public function shorten( $url ) {

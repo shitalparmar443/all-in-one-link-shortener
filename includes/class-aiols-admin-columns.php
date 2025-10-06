@@ -73,7 +73,7 @@ class AIOLS_Admin_Columns {
         $plugin    = AIOLS_Plugin::instance();
         $providers = $plugin->providers;
 
-        $provider_key = get_option( 'aiols_default_provider', 'permalink' );
+        $provider_key = get_option( 'aiols_default_provider', 'aiols_permalink' );
         if ( ! isset( $providers[ $provider_key ] ) ) {
             wp_send_json_error( 'Provider not found.' );
         }

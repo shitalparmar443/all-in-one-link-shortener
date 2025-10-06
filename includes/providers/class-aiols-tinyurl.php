@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class AIOLS_Provider_TinyURL implements AIOLS_Provider_Interface {
 
-    public function get_key() { return 'tinyurl'; }
+    public function get_key() { return 'aiols_tinyurl'; }
     public function get_label() { return __( 'TinyURL', 'all-in-one-link-shortener' ); }
 
     public function shorten( $url ) {

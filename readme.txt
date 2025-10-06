@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/shitalparmar443
 Tags: shortlink, permalink, seo, url-shortener, links
 Requires at least: 6.1
 Tested up to: 6.8
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Plugin URI: https://wordpress.org/plugins/all-in-one-link-shortener/
@@ -13,13 +13,13 @@ Author URI: https://profiles.wordpress.org/shitalparmar443/
 Create shortlinks for WordPress posts/pages using Bitly, TinyURL, Rebrandly, or native WordPress permalinks.
 
 == Description ==
-All In One Link Shortener allows you to easily create short links for posts, pages, or any URL on your WordPress site. It supports multiple link shortening services including Bitly, TinyURL, Rebrandly, is.gd and cutt.ly. You can generate short links using a shortcode and quickly copy them in the admin area.
+All In One Link Shortener allows you to easily create short links for posts, pages, or any URL on your WordPress site. It supports multiple link shortening services including Bitly, TinyURL, Rebrandly, is.gd, t.ly and cutt.ly. You can generate short links using a shortcode and quickly copy them in the admin area.
 
 This plugin is lightweight, fully compatible with WordPress, and provides an intuitive interface in the admin dashboard.
 
 == Features ==
 - Automatic shortlink generation on publish/update.  
-- Supports providers: Bitly, TinyURL, Rebrandly, cutt.ly, is.gd or native WordPress permalinks.  
+- Supports providers: Bitly, TinyURL, Rebrandly, cutt.ly, is.gd, t.ly or native WordPress permalinks.  
 - Admin column with copy-to-clipboard button.  
 - Regenerate shortlinks via post actions or bulk actions.  
 - WP-CLI support for developers.  
@@ -73,6 +73,13 @@ This plugin is lightweight, fully compatible with WordPress, and provides an int
 5. You can test this directly in your browser or use it programmatically via your plugin.
 6. For full API documentation, visit [is.gd API Reference](https://is.gd/developers.php).
 
+= T.LY (API Key Required) =
+1. Visit [T.LY](https://t.ly/) and create a free account.
+2. Generate your API key from your [T.LY Dashboard](https://t.ly/links).
+3. To shorten a link using the API, send a POST request to `https://api.t.ly/api/v1/link/shorten` with your long URL and API token.
+4. The API will return a JSON response containing short_url. Use this value as the shortened link.
+5. For full API documentation, visit [T.LY API Docs](https://t.ly/docs).
+
 == Security & Best Practices ==
 - Treat tokens as secrets; do not commit to public repositories.  
 - Store only in plugin settings; never print in frontend HTML.  
@@ -83,9 +90,9 @@ This plugin is lightweight, fully compatible with WordPress, and provides an int
 
 = How do I create a short link? =
 Use the plugin settings page or the shortcode `[aiols_shortlink id="123"]`.
-
+ 
 = Does it support third-party services? =
-Yes, Bitly, TinyURL, and Rebrandly are supported. API keys are required. WordPress permalinks do not require keys.
+Yes, Bitly, TinyURL, Rebrandly, cutt.ly, t.ly are supported. API keys are required. WordPress permalinks and is.gd do not require keys.
 
 = What data is sent? =
 Only the **post/page URL** is sent. No personal data or post titles are transmitted.
@@ -142,11 +149,24 @@ Yes. Select **Permalink** as the provider. No external API requests are made.
 	- Privacy Policy: [https://is.gd/privacy.php](https://is.gd/privacy.php)  
 	- Contact Us: [https://is.gd/contact.php](https://is.gd/contact.php)
 
+6. **T.LY API Information (API Key Required)**
+	- API URL: [https://t.ly/docs)  
+	- Purpose: Generate short links without requiring an API key.  
+	- Data Sent: Original long URL (no authentication required).  
+	- Documentation: [https://t.ly/docs](https://t.ly/docs)  
+	- Terms of Service: [https://t.ly/terms](https://t.ly/terms)  
+	- Privacy Policy: [https://t.ly/privacy](https://t.ly/privacy)  
+	- Contact Us: [https://t.ly/contact](https://t.ly/contact)
+
 == Open Source ==
 - GitHub repository: https://github.com/shitalparmar443/all-in-one-link-shortener  
 - Contributions via pull requests are welcome.
 
 == Changelog ==
+
+= 1.0.3 =
+* T.LY shortlink provider added.
+* provider's get_key change default `aiols_` prefix added.
 
 = 1.0.2 =
 * is.gd shortlink provider added.

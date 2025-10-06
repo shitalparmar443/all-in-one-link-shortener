@@ -16,7 +16,7 @@ class AIOLS_Provider_Cuttly implements AIOLS_Provider_Interface {
      * @return string
      */
     public function get_key() {
-        return 'cuttly';
+        return 'aiols_cuttly';
     }
 
     /**

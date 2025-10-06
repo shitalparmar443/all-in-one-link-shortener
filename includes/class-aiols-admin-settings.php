@@ -31,10 +31,11 @@ class AIOLS_Admin_Settings {
         register_setting( 'aiols_options', 'aiols_default_provider', array( 'sanitize_callback' => 'sanitize_text_field' ) );
         register_setting( 'aiols_options', 'aiols_auto_generate_on_save', array( 'sanitize_callback' => 'sanitize_text_field' ) );
         $keys = array(
-            'aiols_tinyurl_api_key','aiols_bitly_token','aiols_bitly_domain',
-            'aiols_rebrandly_key','aiols_shortio_key','aiols_cuttly_key',
-            'aiols_t2m_key','aiols_t2m_secret','aiols_tinycc_key',
-            'aiols_kutt_key','aiols_kutt_instance'
+            'aiols_tinyurl_api_key',
+            'aiols_bitly_token',
+            'aiols_rebrandly_key',
+            'aiols_cuttly_key',
+            'aiols_tly_key',
         );
         foreach ( $keys as $k ) register_setting( 'aiols_options', $k, array( 'sanitize_callback' => 'sanitize_text_field' ) );
     }
@@ -56,7 +57,7 @@ class AIOLS_Admin_Settings {
                         <td>
                             <select name="aiols_default_provider" id="aiols_default_provider">
                                 <?php foreach ( $providers as $key => $provider ) : ?>
-                                    <option value="<?php echo esc_attr( $key ); ?>" <?php selected( get_option( 'aiols_default_provider', 'permalink' ), $key ); ?>>
+                                    <option value="<?php echo esc_attr( $key ); ?>" <?php selected( get_option( 'aiols_default_provider', 'aiols_permalink' ), $key ); ?>>
                                         <?php echo esc_html( $provider->get_label() ); ?>
                                     </option>
                                 <?php endforeach; ?>
@@ -127,6 +128,15 @@ class AIOLS_Admin_Settings {
 									            );
 									            ?>
 									        </p>
+									    </td>
+									</tr>
+                  <tr>
+									    <th scope="row">
+									        <label for="aiols_tly_key"><?php esc_html_e( 't.ly', 'all-in-one-link-shortener' ); ?></label>
+									    </th>
+									    <td>
+									    		<input type="text" name="aiols_tly_key" id="aiols_tly_key" value="<?php echo esc_attr( get_option( 'aiols_tly_key', '' ) ); ?>" class="regular-text" />
+									        <p class="description"><?php esc_html_e( 'You can define AIOLS_TLY in wp-config.php or paste token here.', 'all-in-one-link-shortener' ); ?></p>
 									    </td>
 									</tr>
                     

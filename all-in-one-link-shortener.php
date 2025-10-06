@@ -3,7 +3,7 @@
  * Plugin Name: All In One Link Shortener
  * Plugin URI: https://wordpress.org/plugins/all-in-one-link-shortener/
  * Description: Multi-provider link shortener (TinyURL, Bitly, Rebrandly). Admin UI for keys and default provider.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: Shitalben Parmar
  * Contributors: shitalparmar443
  * Author URI: https://profiles.wordpress.org/shitalparmar443/
@@ -12,7 +12,7 @@
  * Requires at least: 6.1
  * Tested up to: 6.8
  * Requires PHP: 7.4
- * Stable tag: 1.0.2
+ * Stable tag: 1.0.3
  * License: GPLv3 or later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
@@ -186,12 +186,13 @@ class AIOLS_Plugin {
 		 */
 		private function register_providers() {
 		    // Built-in providers — keys must match the provider's get_key() value.
-		    $this->providers['permalink']   = new AIOLS_Provider_Default_Permalink_URL();
-		    $this->providers['tinyurl']     = new AIOLS_Provider_TinyURL();
-		    $this->providers['bitly']       = new AIOLS_Provider_Bitly();
-		    $this->providers['rebrandly']   = new AIOLS_Provider_Rebrandly();
-		    $this->providers['cuttly']    = new AIOLS_Provider_Cuttly();
-		    $this->providers['isgd']      = new AIOLS_Provider_Isgd();
+		    $this->providers['aiols_permalink']   = new AIOLS_Provider_Default_Permalink_URL();
+		    $this->providers['aiols_tinyurl']     = new AIOLS_Provider_TinyURL();
+		    $this->providers['aiols_bitly']       = new AIOLS_Provider_Bitly();
+		    $this->providers['aiols_rebrandly']   = new AIOLS_Provider_Rebrandly();
+		    $this->providers['aiols_cuttly']    = new AIOLS_Provider_Cuttly();
+		    $this->providers['aiols_isgd']      = new AIOLS_Provider_Isgd();
+		    $this->providers['aiols_tly']      = new AIOLS_Provider_Tly();
 		    /**
 		     * Filter the list of registered shortlink providers.
 		     *
@@ -211,7 +212,7 @@ class AIOLS_Plugin {
     }
 
     public function get_default_provider_key() {
-        return get_option( 'aiols_default_provider', 'permalink' );
+        return get_option( 'aiols_default_provider', 'aiols_permalink' );
     }
 
     public function generate_shortlink_for_url( $url, $provider_key = null ) {

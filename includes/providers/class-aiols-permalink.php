@@ -29,7 +29,7 @@ class AIOLS_Provider_Default_Permalink_URL implements AIOLS_Provider_Interface {
      * @return string Unique key for this provider.
      */
     public function get_key() {
-        return 'permalink';
+        return 'aiols_permalink';
     }
 
     /**

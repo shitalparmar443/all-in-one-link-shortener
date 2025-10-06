@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class AIOLS_Provider_Isgd implements AIOLS_Provider_Interface {
 
-    public function get_key() { return 'isgd'; }
+    public function get_key() { return 'aiols_isgd'; }
     public function get_label() { return __( 'is.gd', 'all-in-one-link-shortener' ); }
 
     public function shorten( $url ) {
